@@ -16,12 +16,9 @@ st.set_page_config(
 def init():
     Path('./models').mkdir(exist_ok=True)
 
-    # Define the URL and the local file path
-    # https: // github.com / naoto0804 / pytorch - AdaIN / releases / download / v0.0.0 / vgg_normalised.pth
-
     # !wget - nc - P. / models / https: // dl.fbaipublicfiles.com / segment_anything / sam_vit_b_01ec64.pth
     url = "https://github.com/naoto0804/pytorch-AdaIN/releases/download/v0.0.0/vgg_normalised.pth"
-    model_file = join(".", "models", "sam_vit_b_01ec64.pth")
+    model_file = join(".", "models", "vgg_normalised.pth")
 
     # Check if the file already exists
     if not exists(model_file):
