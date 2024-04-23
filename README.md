@@ -25,7 +25,7 @@ Our approach leverages recent advancements in deep learning to achieve real-time
 
 However, the following steps show how to run this project locally:
 
-1. **Project Setup:**
+1. **Project Setup (if you don't have the directory):**
    ```python
    git clone https://github.com/g-nitin/stylized-segmentation.git
    cd stylized-segmentation
