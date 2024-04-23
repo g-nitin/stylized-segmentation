@@ -1,8 +1,5 @@
 from pathlib import Path
 
-from segment_anything import sam_model_registry, SamAutomaticMaskGenerator
-from mobile_sam import SamAutomaticMaskGenerator
-
 import torch
 import numpy as np
 from os.path import exists, join
@@ -36,6 +33,8 @@ def init():
 
 @cache_data(ttl=10*60, show_spinner="Performing segmentation")
 def perform_segmentation(uploaded_image, num_masks, model_file, model_type, device) -> List[np.ndarray]:
+    from segment_anything import sam_model_registry, SamAutomaticMaskGenerator
+
     sam = sam_model_registry[model_type](checkpoint=model_file).to(device=torch.device(device))
 
     # Automatic mask generation

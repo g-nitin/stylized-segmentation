@@ -27,19 +27,14 @@ However, the following steps show how to run this project locally:
 
 1. **Project Setup:**
    ```python
-   pip install -r requirements. txt
+   git clone https://github.com/g-nitin/stylized-segmentation.git
+   cd stylized-segmentation
+   pip install -r requirements.txt
    ```
 2. **Run:**
    ```python
    streamlit run main.py --server.maxUploadSize 100  # Larger files may cause the app to slow down or quit
    ```
-
-### Future Work
-
-* Implement the proposed approach with a chosen style transfer model and user interface framework.
-* Conduct user studies to evaluate the effectiveness and user experience of the interactive interface.
-* Explore advanced segmentation techniques for even more precise targeting of style transfer.
-* Integrate compatibility with various artistic style representations.
 
 ### References
 
