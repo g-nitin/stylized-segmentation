@@ -1,15 +1,31 @@
 import streamlit as st
 from PIL import Image
-from os.path import join
-
+from pathlib import Path
+from os.path import exists, join
 from stylization import stylize
 from utils import combine_with_mask, delete_folder
+from subprocess import run
 
 st.set_page_config(
     page_title="Segify: Style",
     page_icon="🎉",
     initial_sidebar_state="expanded"
 )
+
+
+def init():
+    Path('./models').mkdir(exist_ok=True)
+
+    # Define the URL and the local file path
+    # https: // github.com / naoto0804 / pytorch - AdaIN / releases / download / v0.0.0 / vgg_normalised.pth
+
+    # !wget - nc - P. / models / https: // dl.fbaipublicfiles.com / segment_anything / sam_vit_b_01ec64.pth
+    url = "https://github.com/naoto0804/pytorch-AdaIN/releases/download/v0.0.0/vgg_normalised.pth"
+    model_file = join(".", "models", "sam_vit_b_01ec64.pth")
+
+    # Check if the file already exists
+    if not exists(model_file):
+        run(["wget", "-nc", "-P", "./models/", url])
 
 
 def delete_and_main(folder_path):
