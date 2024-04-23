@@ -41,6 +41,7 @@ def toggle_styling(boolean):
 
 
 st.write(""" # Segify: Style Transfer""")
+init()
 
 # Check if the needed variables are available from session state
 if 'mask' not in st.session_state:
