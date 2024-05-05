@@ -65,6 +65,12 @@ However, the following steps show how to run this project locally:
 | *A comparison of Segify’s results from some of the the content and style images from Huang et al. (Reference 1)* |
 
 
+### Future work
+While the app performs as expected, a few changes could be made to improve the app:
+- The SAM model in use takes about a minute or two to segment the images. To improve speed, a faster model such as [FastSAM](https://github.com/CASIA-IVA-Lab/FastSAM) or [MobileSAM](https://github.com/ChaoningZhang/MobileSAM) could be used.
+- Similar to the style loss weight, α, a content loss weight could be incorporated in the network.
+
+
 ### References
 This work was possible by the following papers and implementations:
 1. Huang, Xun, and Serge Belongie. "Arbitrary style transfer in real-time with adaptive instance normalization." Proceedings of the IEEE international conference on computer vision. 2017. 
