@@ -1,5 +1,5 @@
-models/vgg_normalised.pth
-models/sam_vit_b_01ec64.pth
+#models/vgg_normalised.pth
+#models/sam_vit_b_01ec64.pth
 .DS_Store
 .idea
 __pycache__
