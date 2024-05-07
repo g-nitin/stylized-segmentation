@@ -2,6 +2,16 @@
 
 This project tackles segment-based neural style transfer, allowing users to apply artistic styles to specific regions within an image. It combines the efficiency of AdaIN layers (Reference 1) with the accuracy of the Segment Anything model, SAM, (Reference 2) by Meta AI and offers an interactive user interface, using Python's Streamlit (Reference 3), for creative exploration.
 
+### Results
+|         ![result_1.png](./imgs/descriptives/result_1.png)          | 
+|:------------------------------------------------------------------:| 
+| *Segify's results for different values of the style loss weight α* |
+
+|                                ![result_1.png](./imgs/descriptives/result_2.png)                                 | 
+|:----------------------------------------------------------------------------------------------------------------:| 
+| *A comparison of Segify’s results from some of the the content and style images from Huang et al. (Reference 1)* |
+
+
 ### Inspiration
 
 Traditional neural style transfer methods apply style globally across the entire image. This project addresses this limitation by enabling users to define the target region for style transfer. This approach is inspired by the following works:
@@ -54,16 +64,6 @@ However, the following steps show how to run this project locally:
 * `imgs` sub-directory contains images for testing the app. More specifically, it contains some content and style images from Huang et al. (Reference 1). _See the Results section below for a comparision._
 * `pages` sub-directory contains 3 Python scripts for the Streamlit app. Learn more about Streamlit pages [here](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app).
 * 2 Python scripts, `adain.py` and `adain_net.py` contain the AdaIN net and were adapted from Reference 5.
-
-### Results
-|         ![result_1.png](./imgs/descriptives/result_1.png)          | 
-|:------------------------------------------------------------------:| 
-| *Segify's results for different values of the style loss weight α* |
-
-|                                ![result_1.png](./imgs/descriptives/result_2.png)                                 | 
-|:----------------------------------------------------------------------------------------------------------------:| 
-| *A comparison of Segify’s results from some of the the content and style images from Huang et al. (Reference 1)* |
-
 
 ### Future work
 While the app performs as expected, a few changes could be made to improve the app:
