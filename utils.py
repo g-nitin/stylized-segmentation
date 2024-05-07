@@ -1,19 +1,53 @@
 import os
 from PIL import Image
-from typing import Union
+from typing import Union, Tuple
 import numpy as np
 from pathlib import Path
 from shutil import rmtree
+from requests import get
 
+
+def get_model(model_name: str, url: str, dir_str: str = 'models') -> Tuple[bool, str]:
+    """
+    Get model file from web.
+    :param model_name: The model file's name (with extension)
+    :param url: The url
+    :param dir_str: The path to save (without the `model_name`)
+    :return: A 2-tuple where the first value (boolean) indicates whether the download was successful and
+                the second value (str) gives a related output message.
+    """
+    # Create the "models" directory if it doesn't exist
+    Path(dir_str).mkdir(parents=True, exist_ok=True)
+
+    # Define the URL and the local file path
+    model_file = Path(dir_str, model_name)  # Use Path object
+
+    # Check if the file already exists
+    if not model_file.exists():
+        # Download the file using requests
+        response = get(url, stream=True)
+
+        if response.status_code == 200:
+            # Create the file in write-binary mode
+            with model_file.open("wb") as f:
+                for chunk in response.iter_content(1024):
+                    if chunk:  # filter out keep-alive new chunks
+                        f.write(chunk)
+            return True, f"Downloaded {model_name} successfully!"
+        else:
+            return False, f"Download failed with status code: {response.status_code}"
+    else:
+        return True, 'File already exists'
 
 def combine_with_mask(content_path: Union[str, Path], style_path: Union[str, Path],
                       masked_array: np.ndarray, save_path: Union[str, Path, None] = None) -> Image.Image:
     """
+    Combine the content image with the style image based on the mask.
     :param content_path: The path to the original content image
     :param style_path: The path to the styled segmented image
     :param masked_array: The mask array corresponding to the segment
-    :param save_path:
-    :return:
+    :param save_path: The path where the new image will be saved. To not save, leave None.
+    :return: The Pil.Image object for the final image.
     """
     # Load the two image files
     image1 = Image.open(content_path)
